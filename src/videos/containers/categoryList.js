@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
 
 import Empty from '../components/empty';
-import Vseparator from '../components/vertical-separator';
-import Suggestion from '../components/suggestion';
+import Hseparator from '../../sections/components/horizontal-separator';
+import Layout from '../components/category-list-layout';
+import Category from '../components/category';
 
 class CategoryList extends Component {
 
@@ -13,15 +14,15 @@ class CategoryList extends Component {
 
     renderItem= ({item}) => {
     return (
-        <Suggestion {...item} />)
+        <Category {...item} />)
     }
 
-    itemSeparator= () => <Vseparator color= 'blue'/>
+    itemSeparator= () => <Hseparator color= 'blue'/>
 
     render(){
         return(
-            <View>
-                 <FlatList
+            <Layout title="Categorias">
+                <FlatList
                     horizontal
                     keyExtractor={this.keyExtractor}
                     data={this.props.list}
@@ -29,8 +30,10 @@ class CategoryList extends Component {
                     ItemSeparatorComponent={this.itemSeparator}
                     ListEmptyComponent={this.renderEmpty}
                 />
-            </View>
+            </Layout>
         )
     }
 }
 export default CategoryList
+
+

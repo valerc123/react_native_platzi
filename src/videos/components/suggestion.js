@@ -10,7 +10,7 @@ function Suggestion(props) {
                 source={{uri: props.medium_cover_image}}
                 />
                 <View style={styles.genreContainer}>
-                    <Text style={styles.genreText}>{props.genres[1]}</Text>
+                    <Text style={styles.genreText}>{props.genres[0]}</Text>
                 </View>
             </View>
             <View style={styles.right}>
