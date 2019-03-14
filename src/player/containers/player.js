@@ -48,16 +48,15 @@ class Player extends Component{
     videoRef = (element) =>{
         this.video = element;
     }
-    onProgress = (payload) => {
-       // console.log(payload)
-        let currentTime = payload.currentTime / 60;
+    onProgress = (playload) => {
+        let currentTime = playload.currentTime / 60;
         let minutes = Math.floor(currentTime);
         let seconds = currentTime % 1;
         seconds = (seconds * 60) / 1000;
         let time = (minutes + seconds * 10).toFixed(2);
         this.setState({
           currentTime: time,
-          progress: (payload.currentTime / payload.seekableDuration)
+          progress: (playload.currentTime / playload.seekableDuration)
         });
       }
 
