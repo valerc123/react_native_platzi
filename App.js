@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native';
+import {Text, ScrollView} from 'react-native';
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import API from './utiles/api';
 import CategoryList from './src/videos/containers/categoryList';
 import Player from './src/player/containers/player';
-
-
 
 export default class App extends Component{
 
@@ -31,11 +29,13 @@ export default class App extends Component{
     return (
           <Home>
             <Header />
-            <Player />
-            <Text>Buscador</Text>
-            <Text>Categorias</Text>
-            <CategoryList list={this.state.categoryList}/>
-            <SuggestionList list={this.state.suggestionList}/>
+            <ScrollView>
+              <Player />
+              <Text>Buscador</Text>
+              <Text>Categorias</Text>
+              <CategoryList list={this.state.categoryList}/>
+              <SuggestionList list={this.state.suggestionList}/>
+            </ScrollView>
           </Home>
     )
   }

@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         height: 35,
         flexDirection: 'row',
         paddingHorizontal: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-between'
     }
 }) 
 export default ControlsLayout;
