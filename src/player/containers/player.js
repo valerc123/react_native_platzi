@@ -33,7 +33,7 @@ class Player extends Component{
         })
     }
 
-    //la manera de correcta de cambiar el estado  al contrario en vez de !this.state.pause
+    //la manera correcta de cambiar el estado  al contrario en vez de !this.state.pause
     playPause = () => {
         this.setState(function(prevState){ 
             return { pause: !prevState.pause}
@@ -47,7 +47,7 @@ class Player extends Component{
     }
     onFullScreen = () =>{
         this.fullScreen();
-        this.state.fullScreen ? this.video.dismissFullscreenPlayer() : this.video.presentFullscreenPlayer();
+        this.state.fullScreen ? this.video.dismissFullscreenPlayer() : this.video.presentFullscreenPlayer(); //esto no funciona del todo bien 
     }
     videoRef = (element) =>{
         this.video = element;
@@ -58,7 +58,7 @@ class Player extends Component{
         let seconds = currentTime % 1;
         seconds = (seconds * 60) / 1000;
         let time = (minutes + seconds * 10).toFixed(2); //toFixed(2) 2 decimales
-        let duration = (playload.seekableDuration / 60).toFixed(2)
+        let duration = (playload.seekableDuration / 60).toFixed(2)//seekableDuration: duracion de todo el video
         this.setState({
         currentTime: time,
         progress: (playload.currentTime / playload.seekableDuration),
@@ -66,7 +66,7 @@ class Player extends Component{
         });
       }
       onVolume = () => {
-        var volume = this.state.volume +0.5 
+        var volume = this.state.volume + 0.5 
         var muted  = this.state.muted
         if( volume > 1 ){
             volume = 0
@@ -75,8 +75,8 @@ class Player extends Component{
             muted = false
         }
         this.setState({  
-            volume,
-            muted
+            volume: volume,
+            muted: muted
         })
     }
       
@@ -96,7 +96,7 @@ class Player extends Component{
                         paused={this.state.pause}
                         ref={this.videoRef}
                         onProgress={this.onProgress}
-                        volume={ this.state.volume }
+                        volume={this.state.volume}
                     />
                 }
                 controls={ 
@@ -105,9 +105,9 @@ class Player extends Component{
                         <ProgressBar progress={this.state.progress}/>
                         <TimeLeft duration={this.state.duration} currentTime={this.state.currentTime}/>
                         <Volume
-                            onPress = { this.onVolume }
-                            volume  = { this.state.volume }
-                            muted = { this.state.muted }
+                            onPress={this.onVolume}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
                         />
                         <FullScreen fullScreen={this.state.fullScreen} onPress={this.onFullScreen}/>
                     </ControlLayout>

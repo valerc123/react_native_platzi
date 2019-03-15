@@ -6,6 +6,8 @@ import SuggestionList from './src/videos/containers/suggestion-list';
 import API from './utiles/api';
 import CategoryList from './src/videos/containers/categoryList';
 import Player from './src/player/containers/player';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default class App extends Component{
 
@@ -27,16 +29,20 @@ export default class App extends Component{
 
   render() { 
     return (
-          <Home>
-            <Header />
-            <ScrollView>
-              <Player />
-              <Text>Buscador</Text>
-              <Text>Categorias</Text>
-              <CategoryList list={this.state.categoryList}/>
-              <SuggestionList list={this.state.suggestionList}/>
-            </ScrollView>
-          </Home>
+      <Provider
+        store={store}
+      >
+        <Home>
+          <Header />
+          <ScrollView>
+            <Player />
+            <Text>Buscador</Text>
+            <Text>Categorias</Text>
+            <CategoryList list={this.state.categoryList}/>
+            <SuggestionList list={this.state.suggestionList}/>
+          </ScrollView>
+        </Home>
+      </Provider>
     )
   }
 }
